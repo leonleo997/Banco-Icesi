@@ -1,0 +1,88 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:form id="form">
+	<p:growl id="msg" showDetail="true" autoUpdate="true" />
+
+	<h:panelGrid columns="3" cellpadding="10">
+
+
+		<p:column>
+			<p:panelGrid>
+
+				<p:dock position="bottom" maxWidth="100" itemWidth="70"
+					proximity="40">
+
+
+					<p:menuitem value="Agregar Cliente"
+						icon="/imagenesMenuAsesor/usuario.png" url="AgregarCliente.xhtml" />
+					<p:menuitem value="Modificar Cliente"
+						icon="/imagenesMenuAsesor/usuario2.png"
+						url="ModificarCliente.xhtml" />
+					<p:menuitem value="Agregar Cuenta"
+						icon="/imagenesMenuAsesor/lista.png" url="AgregarCuenta.xhtml" />
+					<p:menuitem value="Buscar Cuenta"
+						icon="/imagenesMenuAsesor/lista2.png" url="BuscarCuenta.xhtml" />
+					<p:menuitem value="Cerrar Sesion"
+						icon="/imagenesMenuAsesor/logout.png" url="../Login.xhtml" />
+
+				</p:dock>
+
+
+			</p:panelGrid>
+		</p:column>
+
+		<p:column>
+			<p:accordionPanel>
+				<p:tab title="AGREGAR CUENTA">
+					<h:panelGrid>
+						<p:outputLabel value="Identificacion Cliente" />
+						<p:inputText id="txtIdentificacion" binding="#{cuentaView.txtId}"/>
+
+
+
+						<BR />
+						<p:commandButton id="butGuardar" value="GUARDAR"
+							action="#{cuentaView.actionGuardar()}" update="form" />
+
+					</h:panelGrid>
+
+				</p:tab>
+			</p:accordionPanel>
+
+		</p:column>
+		<p:column>
+			<p:scrollPanel mode="native" style="width:720px;height:450px">
+
+				<p:dataTable id="tabla" var="cuenta"
+					value="#{cuentaView.listaCuentas}">
+
+
+					<p:column headerText="NUMERO CUENTA">
+						<h:outputText value="#{cuenta.cueNumero}" />
+					</p:column>
+
+					<p:column headerText="IDENTIFICADOR CLIENTE">
+						<h:outputText value="#{cuenta.clientes.cliId}" />
+					</p:column>
+
+					<p:column headerText="SALDO CUENTA">
+						<h:outputText value="#{cuenta.cueSaldo}" />
+					</p:column>
+
+					<p:column headerText="ESTADO CUENTA">
+						<h:outputText value="#{cuenta.cueActiva}" />
+					</p:column>
+				</p:dataTable>
+			</p:scrollPanel>
+		</p:column>
+	</h:panelGrid>
+
+</h:form>
+<h:body>
+</h:body>
+</html>

@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>GESTIÓN TIPOS DE USUARIOS</title>
+</h:head>
+<h:body>
+
+	<h:form id="form">
+		<p:growl id="msg" showDetail="true" />
+		<p:panel id="basic" header="GESTIÓN TIPOS DE USUARIOS">
+			<h:panelGrid columns="2" cellpadding="10" layout="grid">
+				<h:panelGrid columns="1" cellpadding="10" layout="grid">
+					<h:panelGrid id="panelCampos" columns="2" cellpadding="10"
+						layout="grid">
+
+						<p:outputLabel value="CODIGO" />
+						<p:inputText id="AutoCCodigo"
+							binding="#{tipoUsuarioView.txtCodigo}" />
+
+						<p:outputLabel value="NOMBRE" />
+						<p:inputText id="AutoCNombre"
+							binding="#{tipoUsuarioView.txtNombre}" />
+
+					</h:panelGrid>
+
+
+
+					<h:panelGrid columns="3" cellpadding="5" layout="grid">
+						<p:commandButton id="butGuardar" value="GUARDAR"
+							action="#{tipoUsuarioView.actionGuardar()}"
+							update="msg,tabla,panelCampos,form" />
+						<p:commandButton id="butModificar" value="MODIFICAR"
+							action="#{tipoUsuarioView.actionModificar()}"
+							update="msg,tabla,panelCampos,form" />
+						<p:commandButton id="butEliminar" value="ELIMINAR"
+							action="#{tipoUsuarioView.actionEliminar()}"
+							update="msg,tabla,panelCampos,form" />
+						<p:commandButton id="butConsultar" value="CONSULTAR"
+							action="#{tipoUsuarioView.actionConsultar()}"
+							update="msg,tabla,panelCampos,form" />
+						<p:commandButton id="butLimpiar" value="Limpiar"
+							actionListener="#{clienteView.limpiarCampos()}" ajax="false" />
+
+					</h:panelGrid>
+
+
+				</h:panelGrid>
+
+
+				<p:scrollPanel mode="native" style="width:720px;height:450px">
+					<p:dataTable id="tabla" var="tu"
+						value="#{tipoUsuarioView.listaTipoUsuarios}">
+
+						<p:column headerText="CODIGO">
+							<h:outputText value="#{tu.tusuCodigo}" />
+						</p:column>
+
+						<p:column headerText="NOMBRE">
+							<h:outputText value="#{tu.tusuNombre}" />
+						</p:column>
+					</p:dataTable>
+				</p:scrollPanel>
+			</h:panelGrid>
+
+			<p:dock position="bottom" maxWidth="100" itemWidth="70"
+				proximity="40">
+				<p:menuitem value="CLIENTES"
+					icon="/imagenesMenuAsesor/equipo (1).png"
+					url="GestionClientes.xhtml" />
+				<p:menuitem value="CUENTAS"
+					icon="/imagenesMenuAsesor/bank-account.png"
+					url="GestionCuentas.xhtml" />
+				<p:menuitem value="CONSIGNACIONES"
+					icon="/imagenesMenuAsesor/transferencia-bancaria.png"
+					url="GestionConsignaciones.xhtml" />
+				<p:menuitem value="DOCUMENTOS"
+					icon="/imagenesMenuAsesor/carnet-de-identidad.png"
+					url="GestionTiposDocumentos.xhtml" />
+				<p:menuitem value="USUARIOS" icon="/imagenesMenuAsesor/equipo.png"
+					url="GestionUsuario.xhtml" />
+				<p:menuitem value="TIPO_USUARIOS"
+					icon="/imagenesMenuAsesor/hombre-de-negocios-de-pie-junto-a-un-cajon.png"
+					url="GestionTiposUsuarios.xhtml" />
+				<p:menuitem value="RETIROS"
+					icon="/imagenesMenuAsesor/transferencia.png"
+					url="GestionRetiros.xhtml" />
+				<p:menuitem value="HOME" icon="/imagenesMenuAsesor/casa.png"
+					url="SuperUsuario.xhtml" />
+				<p:menuitem value="SALIR"
+					icon="/imagenesMenuAsesor/finalizar-la-sesion.png"
+					url="../Login.xhtml" />
+
+
+			</p:dock>
+
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

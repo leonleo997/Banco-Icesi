@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<TITLE>INICIO ADMINISTRADOR</TITLE>
+</h:head>
+<h:body>
+	<div class="grid-block"
+		style="background-image: url('../FondosVistas/pelotas.jpg'); width: 100%; height: 100%;">
+		<h:form id="form">
+			<p:growl id="msg" showDetail="true" />
+
+			<p:column>
+				<p:panelGrid>
+					<p:stack icon="/imagenesMenuAsesor/cesta-de-la-compra.png"
+						expanded="true">
+						<p:menuitem value="CLIENTES"
+							icon="/imagenesMenuAsesor/equipo (1).png"
+							url="GestionClientes.xhtml" />
+						<p:menuitem value="CUENTAS"
+							icon="/imagenesMenuAsesor/bank-account.png"
+							url="GestionCuentas.xhtml" />
+						<p:menuitem value="CONSIGNACIONES"
+							icon="/imagenesMenuAsesor/transferencia-bancaria.png"
+							url="GestionConsignaciones.xhtml" />
+						<p:menuitem value="DOCUMENTOS"
+							icon="/imagenesMenuAsesor/carnet-de-identidad.png"
+							url="GestionTiposDocumentos.xhtml" />
+						<p:menuitem value="USUARIOS" icon="/imagenesMenuAsesor/equipo.png"
+							url="GestionUsuario.xhtml" />
+						<p:menuitem value="TIPO_USUARIOS"
+							icon="/imagenesMenuAsesor/hombre-de-negocios-de-pie-junto-a-un-cajon.png"
+							url="GestionTiposUsuarios.xhtml" />
+						<p:menuitem value="RETIROS"
+							icon="/imagenesMenuAsesor/transferencia.png"
+							url="GestionRetiros.xhtml" />
+					</p:stack>
+				</p:panelGrid>
+			</p:column>
+		</h:form>
+	</div>
+</h:body>
+
+</html>

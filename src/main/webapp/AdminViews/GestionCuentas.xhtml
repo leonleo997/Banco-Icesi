@@ -1,0 +1,122 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>GESTIÓN CUENTAS</title>
+</h:head>
+<h:body>
+
+	<h:form id="form">
+		<p:growl id="msg" showDetail="true" />
+		<p:panel id="basic" header="GESTIÓN CUENTAS">
+			<h:panelGrid columns="2" cellpadding="10" layout="grid">
+				<h:panelGrid columns="1" cellpadding="10" layout="grid">
+					<h:panelGrid id="panelCampos" columns="2" cellpadding="10"
+						layout="grid">
+						<p:outputLabel value="NÚMERO CUENTA" />
+						<p:inputText id="numCuenta" binding="#{cuentaView.txtNumCuenta}" />
+
+						<p:outputLabel value="IDENTIFICADOR CLIENTE " />
+						<p:inputText id="inpNIdentificadorcuenta"
+							binding="#{cuentaView.txtId}" />
+
+						<p:outputLabel value="SALDO  " />
+						<p:inputText id="inpNSaldo" binding="#{cuentaView.txtSaldo}" />
+
+						<p:outputLabel value="CUENTA ACTIVA" />
+						<p:selectOneRadio id="console"
+							value="#{cuentaView.estadoSeleccionado}">
+							<f:selectItem itemLabel="Activada" itemValue="S" />
+							<f:selectItem itemLabel="Desactivada" itemValue="N" />
+							<f:selectItem itemLabel="Pendiente" itemValue="P" />
+						</p:selectOneRadio>
+
+
+					</h:panelGrid>
+
+
+
+					<h:panelGrid columns="3" cellpadding="5" layout="grid">
+						<p:commandButton id="butGuardar" value="GUARDAR"
+							action="#{cuentaView.actionGuardar()}" update="form" />
+						<p:commandButton id="butModificar" value="MODIFICAR"
+							action="#{cuentaView.actionModificar()}" update="form" />
+
+						<p:commandButton id="butConsultar" value="CONSULTAR"
+							action="#{cuentaView.actionConsultar()}" update="form" />
+						<p:commandButton id="butLimpiar" value="Limpiar"
+							actionListener="#{clienteView.limpiarCampos()}" ajax="false" />
+
+
+					</h:panelGrid>
+
+
+				</h:panelGrid>
+
+				<p:scrollPanel mode="native" style="width:720px;height:450px">
+					<p:dataTable id="tabla" var="cuenta"
+						value="#{cuentaView.listaCuentas}">
+
+
+						<p:column headerText="NUMERO CUENTA">
+							<h:outputText value="#{cuenta.cueNumero}" />
+						</p:column>
+
+						<p:column headerText="IDENTIFICADOR CLIENTE">
+							<h:outputText value="#{cuenta.clientes.cliId}" />
+						</p:column>
+
+						<p:column headerText="SALDO CUENTA">
+							<h:outputText value="#{cuenta.cueSaldo}" />
+						</p:column>
+
+						<p:column headerText="ESTADO CUENTA">
+							<h:outputText value="#{cuenta.cueActiva}" />
+						</p:column>
+
+
+					</p:dataTable>
+				</p:scrollPanel>
+
+
+				<p:dock position="bottom" maxWidth="100" itemWidth="70"
+					proximity="40">
+					<p:menuitem value="CLIENTES"
+						icon="/imagenesMenuAsesor/equipo (1).png"
+						url="GestionClientes.xhtml" />
+					<p:menuitem value="CUENTAS"
+						icon="/imagenesMenuAsesor/bank-account.png"
+						url="GestionCuentas.xhtml" />
+					<p:menuitem value="CONSIGNACIONES"
+						icon="/imagenesMenuAsesor/transferencia-bancaria.png"
+						url="GestionConsignaciones.xhtml" />
+					<p:menuitem value="DOCUMENTOS"
+						icon="/imagenesMenuAsesor/carnet-de-identidad.png"
+						url="GestionTiposDocumentos.xhtml" />
+					<p:menuitem value="USUARIOS" icon="/imagenesMenuAsesor/equipo.png"
+						url="GestionUsuario.xhtml" />
+					<p:menuitem value="TIPO_USUARIOS"
+						icon="/imagenesMenuAsesor/hombre-de-negocios-de-pie-junto-a-un-cajon.png"
+						url="GestionTiposUsuarios.xhtml" />
+					<p:menuitem value="RETIROS"
+						icon="/imagenesMenuAsesor/transferencia.png"
+						url="GestionRetiros.xhtml" />
+					<p:menuitem value="HOME" icon="/imagenesMenuAsesor/casa.png"
+						url="SuperUsuario.xhtml" />
+					<p:menuitem value="SALIR"
+						icon="/imagenesMenuAsesor/finalizar-la-sesion.png"
+						url="../Login.xhtml" />
+
+
+				</p:dock>
+
+
+			</h:panelGrid>
+
+
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

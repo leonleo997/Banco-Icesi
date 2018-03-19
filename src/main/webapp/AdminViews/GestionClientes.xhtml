@@ -1,0 +1,130 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Gestion Clientes</title>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:growl id="msg" showDetail="true" />
+		<p:panel id="basic" header="GESTIÓN CLIENTES">
+			<h:panelGrid columns="2" cellpadding="10" layout="grid">
+				<h:panelGrid columns="1" cellpadding="10" layout="grid">
+					<h:panelGrid id="panelCampos" columns="2" cellpadding="5"
+						layout="grid">
+
+						<p:outputLabel value="Identificación" />
+						<p:inputText id="txtId" binding="#{clienteView.txtId}" />
+
+						<p:outputLabel value="Tipo documento" />
+						<p:selectOneMenu id="tipoDocumentoSel"
+							value="#{clienteView.tipoDocumentoSeleccionado}">
+							<f:selectItem itemLabel="Seleccionar uno" itemValue="" />
+							<f:selectItems value="#{clienteView.listaTiposDocumentos}" />
+						</p:selectOneMenu>
+
+
+						<p:outputLabel value="Nombre" />
+						<p:inputText id="txtNombreUsuario"
+							binding="#{clienteView.txtNombre}" />
+
+						<p:outputLabel value="Dirección" />
+						<p:inputText id="txtDireccion"
+							binding="#{clienteView.txtDireccion}" />
+
+
+						<p:outputLabel value="Teléfono" />
+						<p:inputText id="txtTelefono" binding="#{clienteView.txtTelefono}" />
+
+						<p:outputLabel value="Correo" />
+						<p:inputText id="txtCorreo" binding="#{clienteView.txtCorreo}" />
+					</h:panelGrid>
+
+
+					<h:panelGrid columns="3" cellpadding="5" layout="grid">
+						<p:commandButton id="butGuardar" value="GUARDAR"
+							action="#{clienteView.actionGuardar()}"
+							update="msg,tabla,panelCampos,form" />
+						<p:commandButton id="butModificar" value="MODIFICAR"
+							action="#{clienteView.actionModificar()}"
+							update="msg,tabla,panelCampos,form" />
+						<p:commandButton id="butEliminar" value="ELIMINAR"
+							action="#{clienteView.actionEliminar()}"
+							update="msg,tabla,panelCampos,form" />
+						<p:commandButton id="butConsultar" value="CONSULTAR"
+							action="#{clienteView.actionConsultar()}"
+							update="msg,tabla,panelCampos,form" />
+						<p:commandButton id="butLimpiar" value="Limpiar"
+							actionListener="#{clienteView.limpiarCampos()}" ajax="false" />
+					</h:panelGrid>
+
+
+				</h:panelGrid>
+
+				<p:scrollPanel mode="native" style="width:720px;height:450px">
+					<p:dataTable id="tabla" var="cli"
+						value="#{clienteView.listaClientes}">
+
+
+						<p:column headerText="IDENTIFICACION">
+							<h:outputText value="#{cli.cliId}" />
+						</p:column>
+
+						<p:column headerText="TIPO DOCUMENTO">
+							<h:outputText value="#{cli.tiposDocumentos.tdocCodigo}" />
+						</p:column>
+
+						<p:column headerText="NOMBRE">
+							<h:outputText value="#{cli.cliNombre}" />
+						</p:column>
+
+						<p:column headerText="DIRECCION">
+							<h:outputText value="#{cli.cliDireccion}" />
+						</p:column>
+
+						<p:column headerText="TELEFONO">
+							<h:outputText value="#{cli.cliTelefono}" />
+						</p:column>
+
+						<p:column headerText="EMAIL">
+							<h:outputText value="#{cli.cliMail}" />
+						</p:column>
+
+					</p:dataTable>
+				</p:scrollPanel>
+			</h:panelGrid>
+
+			<p:dock position="bottom" maxWidth="100" itemWidth="70"
+				proximity="40">
+				<p:menuitem value="CLIENTES"
+					icon="/imagenesMenuAsesor/equipo (1).png"
+					url="GestionClientes.xhtml" />
+				<p:menuitem value="CUENTAS"
+					icon="/imagenesMenuAsesor/bank-account.png"
+					url="GestionCuentas.xhtml" />
+				<p:menuitem value="CONSIGNACIONES"
+					icon="/imagenesMenuAsesor/transferencia-bancaria.png"
+					url="GestionConsignaciones.xhtml" />
+				<p:menuitem value="DOCUMENTOS"
+					icon="/imagenesMenuAsesor/carnet-de-identidad.png"
+					url="GestionTiposDocumentos.xhtml" />
+				<p:menuitem value="USUARIOS" icon="/imagenesMenuAsesor/equipo.png"
+					url="GestionUsuario.xhtml" />
+				<p:menuitem value="TIPO_USUARIOS"
+					icon="/imagenesMenuAsesor/hombre-de-negocios-de-pie-junto-a-un-cajon.png"
+					url="GestionTiposUsuarios.xhtml" />
+				<p:menuitem value="RETIROS"
+					icon="/imagenesMenuAsesor/transferencia.png"
+					url="GestionRetiros.xhtml" />
+				<p:menuitem value="HOME" icon="/imagenesMenuAsesor/casa.png"
+					url="SuperUsuario.xhtml" />
+				<p:menuitem value="SALIR"
+					icon="/imagenesMenuAsesor/finalizar-la-sesion.png"
+					url="../Login.xhtml" />
+			</p:dock>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

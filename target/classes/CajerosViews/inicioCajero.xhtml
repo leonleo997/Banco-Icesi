@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:growl id="msg" showDetail="true" />
+
+		<h:panelGrid columns="3" cellpadding="10">
+
+			<p:column>
+				<p:panelGrid>
+					<p:dock position="bottom" maxWidth="100" itemWidth="70"
+						proximity="40">
+						<p:menuitem value="Retirar"
+							icon="/imagenesMenuAsesor/transactions (1).png"
+							url="RetirosCuenta.xhtml" />
+						<p:menuitem value="Consignar"
+							icon="/imagenesMenuAsesor/transactions (2).png"
+							url="Consignaciones.xhtml" />
+						<p:menuitem value="Cerrar Sesion"
+							icon="/imagenesMenuAsesor/logout.png"
+							url="../LoginPrincipal.xhtml" />
+					</p:dock>
+				</p:panelGrid>
+			</p:column>
+
+
+
+
+			<!-- version anterior		 -->
+		</h:panelGrid>
+
+	</h:form>
+
+</h:body>
+</html>

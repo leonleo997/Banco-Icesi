@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:growl id="msg" showDetail="true" autoUpdate="true"/>
+
+		<h:panelGrid columns="3" cellpadding="10">
+
+			<p:column>
+				<h:panelGrid>
+					<p:dock position="bottom" maxWidth="100" itemWidth="70"
+						proximity="40">
+						<p:menuitem value="Retirar"
+							icon="/imagenesMenuAsesor/transactions (1).png"
+							url="RetirosCuenta.xhtml" />
+						<p:menuitem value="Consignar"
+							icon="/imagenesMenuAsesor/transactions (2).png"
+							url="Consignaciones.xhtml" />
+						<p:menuitem value="Cerrar Sesion"
+							icon="/imagenesMenuAsesor/logout.png" url="../Login.xhtml" />
+					</p:dock>
+				</h:panelGrid>
+			</p:column>
+
+
+			<p:column>
+				<p:accordionPanel>
+
+					<p:tab title="RETIROS CUENTA">
+
+						<h:panelGrid columns="2">
+							<p:outputLabel value="NUMERO CUENTA" />
+							<p:inputText id="AutoCretiroes"
+								binding="#{retiroView.txtNumCuenta}" />
+
+							<p:outputLabel value="VALOR" />
+							<p:inputText id="txtValor" binding="#{retiroView.txtValor}" />
+
+							<p:outputLabel value="CLAVE: " />
+							<p:password id="CLAVE" binding="#{retiroView.clave}" />
+
+
+							<p:commandButton id="butGuardar" value="GUARDAR"
+								action="#{retiroView.actionGuardar()}" update="form" />
+
+
+						</h:panelGrid>
+
+
+
+					</p:tab>
+				</p:accordionPanel>
+			</p:column>
+
+			<p:column>
+				<p:scrollPanel mode="native" style="width:720px;height:450px">
+
+					<p:dataTable id="tabla" var="retiros"
+						value="#{retiroView.listaRetiros}">
+						<p:column headerText="NUMERO CUENTA">
+							<h:outputText value="#{retiros.id.cueNumero}" />
+						</p:column>
+
+						<p:column headerText="CODIGO">
+							<h:outputText value="#{retiros.id.retCodigo}" />
+						</p:column>
+
+						<p:column headerText="CEDULA USUARIO">
+							<h:outputText value="#{retiros.usuarios.usuCedula}" />
+						</p:column>
+
+						<p:column headerText="VALOR">
+							<h:outputText value="#{retiros.retValor}" />
+						</p:column>
+
+						<p:column headerText="FECHA">
+							<h:outputText value="#{retiros.retFecha}" />
+						</p:column>
+
+						<p:column headerText="DESCRIPCION">
+							<h:outputText value="#{retiros.retDescripcion}" />
+						</p:column>
+					</p:dataTable>
+				</p:scrollPanel>
+			</p:column>
+
+
+
+
+
+			<!-- version anterior		 -->
+		</h:panelGrid>
+
+	</h:form>
+
+</h:body>
+</html>

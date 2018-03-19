@@ -1,0 +1,140 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Gestion consignaciones</title>
+</h:head>
+<h:form id="form">
+	<p:growl id="msg" showDetail="true" />
+	<p:panel id="basic" header="Gestión consignaciones">
+		<p:scrollPanel mode="native">
+			<h:panelGrid columns="2" cellpadding="10" layout="grid">
+				<h:panelGrid columns="2" cellpadding="10" layout="grid">
+					<h:panelGrid id="panelCampos" columns="2" cellpadding="10"
+						layout="grid">
+
+					<p:outputLabel value="NUMERO CUENTA" />
+						<p:inputText id="AutoCConsignaciones"
+							binding="#{consignacionView.txtNumCuenta}" />
+
+						<p:outputLabel value="CODIGO" />
+						<p:inputText id="AutoCCodigo"
+							binding="#{consignacionView.txtCodigo}" />
+
+						<p:outputLabel value="CEDULA USUARIO" />
+						<p:inputText id="AutoCUsuarios"
+							binding="#{consignacionView.txtUsuario}" />
+
+						<p:outputLabel value="FECHA" />
+						<p:calendar id="calFecha" value="#{consignacionView.fecha}">
+						</p:calendar>
+
+						<p:outputLabel value="VALOR" />
+						<p:inputText id="txtValor" binding="#{consignacionView.txtValor}" />
+
+						<p:outputLabel value="DESCRIPCION" />
+						<p:inputTextarea id="itaDescripcion"
+							binding="#{consignacionView.txtDescripcion}" />
+
+
+										</h:panelGrid>
+
+					<h:panelGrid columns="1" cellpadding="10" layout="grid"
+						style="margin-left:10px">
+
+					</h:panelGrid>
+					<h:panelGrid columns="1" cellpadding="10" layout="grid">
+						<h:panelGrid columns="3" cellpadding="5" layout="grid">
+							<p:commandButton id="butGuardar" value="GUARDAR"
+								action="#{consignacionView.actionGuardar()}"
+								update="msg,tabla,panelCampos,form" />
+							<p:commandButton id="butModificar" value="MODIFICAR"
+								action="#{consignacionView.actionModificar()}"
+								update="msg,tabla,panelCampos,form" />
+							<p:commandButton id="butEliminar" value="ELIMINAR"
+								action="#{consignacionView.actionEliminar()}"
+								update="msg,tabla,panelCampos,form" />
+							<p:commandButton id="butConsultar" value="CONSULTAR"
+								action="#{consignacionView.actionConsultar()}"
+								update="msg,tabla,panelCampos,form" />
+							<p:commandButton id="butCerrar" value="Logout"
+								actionListener="#{consignacionView.logout()}" />
+						</h:panelGrid>
+
+					</h:panelGrid>
+
+
+				</h:panelGrid>
+				<p:scrollPanel mode="native" style="width:720px;height:450px">
+					<p:dataTable id="tabla" var="consignaciones"
+						value="#{consignacionView.listaConsignaciones}">
+
+						<p:column headerText="NUMERO CUENTA">
+							<h:outputText value="#{consignaciones.id.cueNumero}" />
+						</p:column>
+
+						<p:column headerText="CODIGO">
+							<h:outputText value="#{consignaciones.id.conCodigo}" />
+						</p:column>
+
+						<p:column headerText="CEDULA USUARIO">
+							<h:outputText value="#{consignaciones.usuarios.usuCedula}" />
+						</p:column>
+
+						<p:column headerText="VALOR">
+							<h:outputText value="#{consignaciones.conValor}" />
+						</p:column>
+
+						<p:column headerText="FECHA">
+							<h:outputText value="#{consignaciones.conFecha}" />
+						</p:column>
+
+						<p:column headerText="DESCRIPCION">
+							<h:outputText value="#{consignaciones.conDescripcion}" />
+						</p:column>
+					</p:dataTable>
+				</p:scrollPanel>
+				<p:dock position="bottom" maxWidth="100" itemWidth="70"
+					proximity="40">
+					<p:menuitem value="CLIENTES"
+						icon="/imagenesMenuAsesor/equipo (1).png"
+						url="GestionClientes.xhtml" />
+					<p:menuitem value="CUENTAS"
+						icon="/imagenesMenuAsesor/bank-account.png"
+						url="GestionCuentas.xhtml" />
+					<p:menuitem value="CONSIGNACIONES"
+						icon="/imagenesMenuAsesor/transferencia-bancaria.png"
+						url="GestionConsignaciones.xhtml" />
+					<p:menuitem value="DOCUMENTOS"
+						icon="/imagenesMenuAsesor/carnet-de-identidad.png"
+						url="GestionTiposDocumentos.xhtml" />
+					<p:menuitem value="USUARIOS" icon="/imagenesMenuAsesor/equipo.png"
+						url="GestionUsuario.xhtml" />
+					<p:menuitem value="TIPO_USUARIOS"
+						icon="/imagenesMenuAsesor/hombre-de-negocios-de-pie-junto-a-un-cajon.png"
+						url="GestionTiposUsuarios.xhtml" />
+					<p:menuitem value="RETIROS"
+						icon="/imagenesMenuAsesor/transferencia.png"
+						url="GestionRetiros.xhtml" />
+					<p:menuitem value="HOME" icon="/imagenesMenuAsesor/casa.png"
+						url="SuperUsuario.xhtml" />
+					<p:menuitem value="SALIR"
+						icon="/imagenesMenuAsesor/finalizar-la-sesion.png"
+						url="../Login.xhtml" />
+
+
+				</p:dock>
+			</h:panelGrid>
+
+
+
+		</p:scrollPanel>
+
+
+	</p:panel>
+</h:form>
+<h:body>
+</h:body>
+</html>

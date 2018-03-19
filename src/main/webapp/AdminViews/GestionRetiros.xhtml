@@ -1,0 +1,135 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Gestion Retiros</title>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:growl id="msg" showDetail="true" />
+		<p:panel id="basic" header="Gestion Retiros">
+			<h:panelGrid columns="2" cellpadding="10" layout="grid">
+				<h:panelGrid columns="2" cellpadding="10" layout="grid">
+					<h:panelGrid id="panelCampos" columns="2" cellpadding="10"
+						layout="grid">
+						<p:outputLabel value="NUMERO CUENTA" />
+						<p:inputText id="AutoCretiroes"
+							binding="#{retiroView.txtNumCuenta}" />
+
+						<p:outputLabel value="CODIGO" />
+						<p:inputText id="AutoCCodigo" binding="#{retiroView.txtCodigo}" />
+
+						<p:outputLabel value="CEDULA USUARIO" />
+						<p:inputText id="AutoCUsuarios" binding="#{retiroView.txtUsuario}" />
+
+						<p:outputLabel value="FECHA" />
+						<p:calendar id="calFecha" value="#{retiroView.fecha}">
+						</p:calendar>
+
+						<p:outputLabel value="VALOR" />
+						<p:inputText id="txtValor" binding="#{retiroView.txtValor}" />
+
+						<p:outputLabel value="DESCRIPCION" />
+						<p:inputTextarea id="idDescripcion"
+							binding="#{retiroView.txtDescripcion}" />
+
+
+						<p:outputLabel value="CLAVE"></p:outputLabel>
+						<p:password id="CLAVE" binding="#{retiroView.clave}" />
+
+
+					</h:panelGrid>
+
+					<h:panelGrid columns="1" cellpadding="10" layout="grid"
+						style="margin-left:10px">
+
+					</h:panelGrid>
+					<h:panelGrid columns="3" cellpadding="5" layout="grid">
+						<p:commandButton id="butGuardar" value="GUARDAR"
+							action="#{retiroView.actionGuardar()}"
+							update="msg,tabla,panelCampos,form" />
+						<p:commandButton id="butModificar" value="MODIFICAR"
+							action="#{retiroView.actionModificar()}"
+							update="msg,tabla,panelCampos,form" />
+						<p:commandButton id="butEliminar" value="ELIMINAR"
+							action="#{retiroView.actionEliminar()}"
+							update="msg,tabla,panelCampos,form" />
+						<p:commandButton id="butConsultar" value="CONSULTAR"
+							action="#{retiroView.actionConsultar()}"
+							update="msg,tabla,panelCampos,form" />
+						<p:commandButton id="butLimpiar" value="Limpiar"
+							actionListener="#{clienteView.limpiarCampos()}" ajax="false" />
+
+					</h:panelGrid>
+				</h:panelGrid>
+				<p:scrollPanel mode="native" style="width:720px;height:450px">
+					<p:dataTable id="tabla" var="retiros"
+						value="#{retiroView.listaRetiros}">
+						<p:column headerText="NUMERO CUENTA">
+							<h:outputText value="#{retiros.id.cueNumero}" />
+						</p:column>
+
+						<p:column headerText="CODIGO">
+							<h:outputText value="#{retiros.id.retCodigo}" />
+						</p:column>
+
+						<p:column headerText="CEDULA USUARIO">
+							<h:outputText value="#{retiros.usuarios.usuCedula}" />
+						</p:column>
+
+						<p:column headerText="VALOR">
+							<h:outputText value="#{retiros.retValor}" />
+						</p:column>
+
+						<p:column headerText="FECHA">
+							<h:outputText value="#{retiros.retFecha}" />
+						</p:column>
+
+
+
+
+						<p:column headerText="DESCRIPCION">
+							<h:outputText value="#{retiros.retDescripcion}" />
+						</p:column>
+					</p:dataTable>
+				</p:scrollPanel>
+
+				<p:dock position="bottom" maxWidth="100" itemWidth="70"
+					proximity="40">
+					<p:menuitem value="CLIENTES"
+						icon="/imagenesMenuAsesor/equipo (1).png"
+						url="GestionClientes.xhtml" />
+					<p:menuitem value="CUENTAS"
+						icon="/imagenesMenuAsesor/bank-account.png"
+						url="GestionCuentas.xhtml" />
+					<p:menuitem value="CONSIGNACIONES"
+						icon="/imagenesMenuAsesor/transferencia-bancaria.png"
+						url="GestionConsignaciones.xhtml" />
+					<p:menuitem value="DOCUMENTOS"
+						icon="/imagenesMenuAsesor/carnet-de-identidad.png"
+						url="GestionTiposDocumentos.xhtml" />
+					<p:menuitem value="USUARIOS" icon="/imagenesMenuAsesor/equipo.png"
+						url="GestionUsuario.xhtml" />
+					<p:menuitem value="TIPO_USUARIOS"
+						icon="/imagenesMenuAsesor/hombre-de-negocios-de-pie-junto-a-un-cajon.png"
+						url="GestionTiposUsuarios.xhtml" />
+					<p:menuitem value="RETIROS"
+						icon="/imagenesMenuAsesor/transferencia.png"
+						url="GestionRetiros.xhtml" />
+					<p:menuitem value="HOME" icon="/imagenesMenuAsesor/casa.png"
+						url="SuperUsuario.xhtml" />
+					<p:menuitem value="SALIR"
+						icon="/imagenesMenuAsesor/finalizar-la-sesion.png"
+						url="../Login.xhtml" />
+
+
+				</p:dock>
+
+
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

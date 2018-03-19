@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<BODY>
+<h:form id="form">
+<p:growl id="msg" showDetail="true" />
+
+<h:panelGrid columns="3" cellpadding="10">
+
+
+<p:panelGrid>
+
+
+
+				<p:tab title="RETIROS CUENTA">
+			
+
+						<p:outputLabel value="NUMERO CUENTA" />
+						<p:inputText id="AutoCretiroes"
+							binding="#{retiroView.txtNumCuenta}" />
+
+						<p:outputLabel value="VALOR" />
+						<p:inputText id="txtValor" binding="#{retiroView.txtValor}" />
+
+						<p:outputLabel for="clave" value="CLAVE: " />
+						<p:keyboard id="clave" value="" required="true"
+							requiredMessage="La clave es obligatoria" keypadOnly="true" />
+						<p:message for="clave" binding="#{retiroView.clave}" />
+				
+						<p:commandButton id="butGuardar" value="GUARDAR"
+							action="#{retiroView.actionGuardar()}"
+							update="msg,tabla,panelCampos,form" />
+						
+
+					
+
+				</p:tab>
+
+
+</p:panelGrid>
+
+
+</h:panelGrid>
+
+</h:form>
+</BODY>
+</html>
